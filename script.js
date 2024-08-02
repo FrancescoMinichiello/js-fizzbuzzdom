@@ -27,15 +27,31 @@ sempre la migliore*/
 
 
 //Recupero elementi dal DOM
-const target = document.getElementById('target');
+document.addEventListener("DOMContentLoaded", () => {
+    const result = document.getElementById('result');
+    // Creo il ciclo per la generazione numeri
+    for (let i = 1; i <= 100; i++) {
+        const col = document.createElement('div');
+        col.classList.add('col');
+        // Creo l'elemento  
+        const box = document.createElement('div');
+        box.classList.add('box', 'd-flex');
+        //Calcolo quali sono i dispari e i pari
+        if (i % 3 === 0 && i % 5 === 0) {
+            box.textContent = 'fizzbuzz';
+            box.classList.add('fizzbuzz');
+        } else if (i % 3 === 0) {
+            box.textContent = 'fizz';
+            box.classList.add('fizz');
+        } else if (i % 5 === 0) {
+            box.textContent = 'buzz';
+            box.classList.add('buzz');
+        } else {
+            box.textContent = i;
+        }
 
+        col.appendChild(box);
+        result.appendChild(col);
+    }
+});
 
-let number = '<ul>';
-
-for (let i = 1; i <= 100; i++) {
-    number += `<li>numero ${i}</li>`;
-}
-
-number += '</ul>'
-console.log(number);
-target.innerhtml = number;
